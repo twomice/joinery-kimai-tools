@@ -65,6 +65,7 @@ while ($row = fgetcsv($fp)) {
   $newrow['project'] = $row[11];
   $newrow['activity'] = $row[12];
   $newrow['comment'] = $row[14];
+  $newrow['location'] = $row[15];
   $newrow['trackingno'] = $row[16];
   $newrow['sorttimestamp'] = strtotime($newrow['date'] . ' ' . $newrow['in']);
 
@@ -117,6 +118,7 @@ foreach ($rows as &$row) {
     'extra_comment' => $row['extra_comment'],
     'comment' => $row['comment'],
     'customer' => $row['customer'],
+    'location' => $row['location'],
     'in' => $row['in'],
     'out' => $row['out'],
     'activity' => $row['activity'],
@@ -143,8 +145,8 @@ $columns_ordered = array(
     'label' => 'Client',
   ),
   array(
-    'key' => 'project',
-    'label' => 'Project',
+    'key' => 'location',
+    'label' => 'Location/Price',
   ),
   array(
     'key' => 'date',
@@ -270,7 +272,7 @@ foreach ($consolidated_rows as $row) {
 
 
 echo "\nLazy command line for OpenOffice users:\n";
-echo "oocalc $cleaned_file $consolidated_file\n\n";
+echo "localc $cleaned_file $consolidated_file\n\n";
 echo "Done.\n";
 exit;
 
